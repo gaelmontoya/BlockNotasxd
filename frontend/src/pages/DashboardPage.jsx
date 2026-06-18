@@ -441,14 +441,47 @@ export default function DashboardPage() {
                     {plan.features.map(f => <li key={f} style={s.planFeature}>✓ {f}</li>)}
                   </ul>
                   {plan.precio > 0 && (
-                    user?.plan?.toLowerCase() === plan.nombre.toLowerCase() ? (
-                      <div style={{ ...s.payBtn, background: '#1e1e22', color: '#666', textAlign: 'center', marginTop: '16px', cursor: 'default' }}>
-                        Tu plan actual
-                      </div>
-                    ) : (
-                      {premiumMode ? <button onClick={cancelarPremium} style={{...s.payBtn,background:'#d4af37'}}>Cancelar suscripción</button> : <button onClick={() => pagar(plan.id)} style={{ ...s.payBtn, background: '#009ee3', marginTop: '16px' }}>Pagar con MercadoPago</button>}
-                    )
-                  )}
+  user?.plan?.toLowerCase() === plan.nombre.toLowerCase() ? (
+    <div
+      style={{
+        ...s.payBtn,
+        background: '#1e1e22',
+        color: '#666',
+        textAlign: 'center',
+        marginTop: '16px',
+        cursor: 'default'
+      }}
+    >
+      Tu plan actual
+    </div>
+  ) : (
+    <>
+      {premiumMode ? (
+        <button
+          onClick={cancelarPremium}
+          style={{
+            ...s.payBtn,
+            background: '#d4af37',
+            marginTop: '16px'
+          }}
+        >
+          Cancelar suscripción
+        </button>
+      ) : (
+        <button
+          onClick={() => pagar(plan.id)}
+          style={{
+            ...s.payBtn,
+            background: '#009ee3',
+            marginTop: '16px'
+          }}
+        >
+          Pagar con MercadoPago
+        </button>
+      )}
+    </>
+  )
+)}
                 </div>
               ))}
             </div>
