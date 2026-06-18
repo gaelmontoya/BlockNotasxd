@@ -493,69 +493,175 @@ export default function DashboardPage() {
 }
 
 const s = {
-  root: { display: 'flex', height: '100vh', background: '#0d0d0f', fontFamily: "'Inter', sans-serif", color: '#f0f0f2', overflow: 'hidden' },
-  sidebar: { width: '220px', background: '#111113', borderRight: '1px solid #1e1e21', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '20px 0', flexShrink: 0 },
-  sidebarTop: { display: 'flex', flexDirection: 'column', gap: '4px', padding: '0 12px' },
-  logo: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' },
-  logoText: { fontSize: '16px', fontWeight: '700', letterSpacing: '-0.3px' },
-  userBadge: { background: '#1a1a1d', borderRadius: '8px', padding: '8px 12px', marginBottom: '12px' },
-  userName: { display: 'block', fontSize: '13px', fontWeight: '500', color: '#ccc' },
-  userPlan: { fontSize: '11px', color: premiumMode ? '#d4af37' : '#7c6af7', textTransform: 'capitalize', fontWeight: '600' },
-  btnNueva: { background: premiumMode ? '#d4af37' : '#7c6af7', color: '#fff', border: 'none', borderRadius: '8px', padding: '9px 14px', cursor: 'pointer', fontSize: '14px', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', width: '100%' },
-  btnNuevaLimite: { background: '#2a2a2e', color: '#888' },
-  nav: { display: 'flex', flexDirection: 'column', gap: '2px', marginTop: '8px' },
-  navItem: { background: 'none', border: 'none', color: '#666', fontSize: '13px', padding: '8px 12px', borderRadius: '8px', cursor: 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'inherit', width: '100%' },
-  navActive: { background: '#1e1e22', color: '#f0f0f2' },
-  logoutBtn: { background: 'none', border: 'none', color: '#444', fontSize: '13px', padding: '8px 24px', cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' },
-  notesList: { width: '260px', borderRight: '1px solid #1e1e21', overflowY: 'auto', flexShrink: 0 },
-  searchWrap: { padding: '12px' },
-  searchInput: { width: '100%', background: '#1a1a1d', border: '1px solid #2a2a2e', borderRadius: '8px', padding: '8px 12px', color: '#ccc', fontSize: '13px', outline: 'none', boxSizing: 'border-box', fontFamily: 'inherit' },
-  notesCount: { fontSize: '11px', color: '#444', padding: '0 12px 8px', textTransform: 'uppercase', letterSpacing: '1px' },
-  limitBanner: { margin: '0 12px 12px', padding: '8px 10px', background: '#241c33', border: '1px solid #3a2d57', borderRadius: '8px', color: '#b3a4ff', fontSize: '12px', cursor: 'pointer' },
-  colorDot: { width: '8px', height: '8px', borderRadius: '50%', display: 'inline-block' },
-  noteCard: { padding: '12px 14px', borderBottom: '1px solid #1a1a1d', cursor: 'pointer', transition: 'background 0.1s' },
-  noteCardActive: { background: '#1e1e22' },
-  noteCardHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' },
-  noteTitle: { fontSize: '14px', fontWeight: '500', color: '#ddd', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '180px' },
-  notePreview: { fontSize: '12px', color: '#555', lineHeight: '1.4', overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' },
-  tagsRow: { display: 'flex', flexWrap: 'wrap', gap: '4px', marginTop: '6px' },
-  tag: { background: '#1e1a33', color: premiumMode ? '#d4af37' : '#7c6af7', fontSize: '11px', padding: '2px 7px', borderRadius: '4px' },
-  noteDate: { fontSize: '11px', color: '#333', marginTop: '6px' },
-  empty: { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '200px', color: '#444', fontSize: '14px' },
-  main: { flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' },
-  emptyMain: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#333' },
-  editor: { flex: 1, display: 'flex', flexDirection: 'column' },
-  editorToolbar: { display: 'flex', gap: '8px', padding: '14px 24px', borderBottom: '1px solid #1a1a1d', alignItems: 'center', flexWrap: 'wrap' },
-  colorPicker: { display: 'flex', gap: '6px', marginLeft: 'auto', alignItems: 'center' },
-  colorSwatch: { width: '20px', height: '20px', borderRadius: '50%', border: '2px solid transparent', cursor: 'pointer', position: 'relative', padding: 0 },
-  colorSwatchActive: { border: '2px solid #fff' },
-  colorSwatchLocked: { opacity: 0.35, cursor: 'not-allowed' },
-  colorLockBadge: { position: 'absolute', top: '-4px', right: '-4px', fontSize: '9px' },
-  colorMsg: { padding: '8px 24px', fontSize: '12px', color: '#f7c86a', background: '#26210f', borderBottom: '1px solid #1a1a1d' },
-  toolBtn: { background: '#1e1e22', border: '1px solid #2a2a2e', color: '#ccc', borderRadius: '7px', padding: '6px 14px', cursor: 'pointer', fontSize: '13px', fontFamily: 'inherit' },
-  editForm: { display: 'flex', flexDirection: 'column', flex: 1, padding: '24px' },
-  editTitle: { fontSize: '24px', fontWeight: '700', background: 'transparent', border: 'none', outline: 'none', color: '#f0f0f2', marginBottom: '12px', fontFamily: 'inherit' },
-  editTags: { fontSize: '13px', background: '#1a1a1d', border: '1px solid #2a2a2e', borderRadius: '6px', padding: '7px 12px', color: '#888', marginBottom: '16px', outline: 'none', fontFamily: 'inherit' },
-  editTextarea: { flex: 1, background: 'transparent', border: 'none', outline: 'none', color: '#ccc', fontSize: '15px', lineHeight: '1.7', fontFamily: "'JetBrains Mono', 'Inter', monospace", resize: 'none', minHeight: '400px' },
-  viewNote: { padding: '28px 32px' },
-  viewTitle: { fontSize: '26px', fontWeight: '700', color: '#f0f0f2', margin: '0 0 12px 0' },
-  viewDate: { fontSize: '12px', color: '#444', marginBottom: '20px' },
-  viewContent: { fontSize: '15px', lineHeight: '1.8', color: '#bbb', whiteSpace: 'pre-wrap', fontFamily: "'JetBrains Mono', monospace" },
-  statsView: { padding: '28px 32px' },
-  sectionTitle: { fontSize: '20px', fontWeight: '700', marginBottom: '20px', color: '#f0f0f2' },
-  statsGrid: { display: 'flex', gap: '16px', flexWrap: 'wrap' },
-  statCard: { background: '#161618', border: '1px solid #2a2a2e', borderRadius: '12px', padding: '20px 24px', minWidth: '140px' },
-  statNum: { fontSize: '32px', fontWeight: '700', color: '#f0f0f2' },
-  statLabel: { fontSize: '13px', color: '#555', marginTop: '4px' },
-  recentItem: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid #1a1a1d', cursor: 'pointer' },
-  planesView: { padding: '28px 32px' },
-  planCard: { background: '#161618', border: '1px solid #2a2a2e', borderRadius: '14px', padding: '24px', minWidth: '200px', flex: '1', maxWidth: '260px', position: 'relative' },
-  planCardFeatured: { border: '1px solid #7c6af7' },
-  planBadge: { position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)', background: premiumMode ? '#d4af37' : '#7c6af7', color: '#fff', fontSize: '11px', fontWeight: '700', padding: '3px 12px', borderRadius: '20px' },
-  planName: { fontSize: '18px', fontWeight: '700', color: '#f0f0f2', marginBottom: '6px' },
-  planPrice: { fontSize: '22px', fontWeight: '700', color: premiumMode ? '#d4af37' : '#7c6af7', marginBottom: '8px' },
-  planDesc: { fontSize: '13px', color: '#666', marginBottom: '14px' },
-  planFeatures: { listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' },
-  planFeature: { fontSize: '13px', color: '#aaa' },
-  payBtn: { background: '#238636', color: '#fff', border: 'none', borderRadius: '7px', padding: '8px', fontSize: '13px', cursor: 'pointer', fontFamily: 'inherit', fontWeight: '500' },
+  root: {
+    display: 'flex',
+    height: '100vh',
+    background: '#0d0d0f',
+    fontFamily: "'Inter', sans-serif",
+    color: '#f0f0f2',
+    overflow: 'hidden'
+  },
+
+  sidebar: {
+    width: '220px',
+    background: '#111113',
+    borderRight: '1px solid #1e1e21',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    padding: '20px 0',
+    flexShrink: 0
+  },
+
+  sidebarTop: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+    padding: '0 12px'
+  },
+
+  logo: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    marginBottom: '12px'
+  },
+
+  logoText: {
+    fontSize: '16px',
+    fontWeight: '700'
+  },
+
+  userBadge: {
+    background: '#1a1a1d',
+    borderRadius: '8px',
+    padding: '8px 12px',
+    marginBottom: '12px'
+  },
+
+  userName: {
+    display: 'block',
+    fontSize: '13px',
+    color: '#ccc'
+  },
+
+  userPlan: {
+    fontSize: '11px',
+    color: '#7c6af7'
+  },
+
+  btnNueva: {
+    background: '#7c6af7',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '8px',
+    padding: '10px',
+    cursor: 'pointer',
+    width: '100%'
+  },
+
+  btnNuevaLimite: {
+    background: '#2a2a2e'
+  },
+
+  nav: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px'
+  },
+
+  navItem: {
+    background: 'transparent',
+    color: '#888',
+    border: 'none',
+    padding: '10px',
+    cursor: 'pointer'
+  },
+
+  navActive: {
+    background: '#1e1e22',
+    color: '#fff'
+  },
+
+  logoutBtn: {
+    background: 'transparent',
+    border: 'none',
+    color: '#666',
+    cursor: 'pointer'
+  },
+
+  notesList: {
+    width: '260px',
+    overflowY: 'auto'
+  },
+
+  searchWrap: {
+    padding: '12px'
+  },
+
+  searchInput: {
+    width: '100%',
+    padding: '10px',
+    background: '#1a1a1d',
+    color: '#fff',
+    border: '1px solid #333'
+  },
+
+  noteCard: {
+    padding: '14px',
+    borderBottom: '1px solid #222',
+    cursor: 'pointer'
+  },
+
+  noteCardActive: {
+    background: '#1e1e22'
+  },
+
+  tag: {
+    background: '#1e1a33',
+    color: '#7c6af7',
+    padding: '3px 8px',
+    borderRadius: '4px'
+  },
+
+  editor: {
+    flex: 1
+  },
+
+  toolBtn: {
+    background: '#1e1e22',
+    color: '#fff',
+    border: 'none',
+    padding: '8px 14px'
+  },
+
+  statCard: {
+    background: '#161618',
+    padding: '20px',
+    borderRadius: '10px'
+  },
+
+  planCard: {
+    background: '#161618',
+    padding: '20px',
+    borderRadius: '12px'
+  },
+
+  planBadge: {
+    background: '#7c6af7',
+    color: '#fff',
+    padding: '4px 10px'
+  },
+
+  planPrice: {
+    color: '#7c6af7'
+  },
+
+  payBtn: {
+    background: '#009ee3',
+    color: '#fff',
+    border: 'none',
+    padding: '10px',
+    borderRadius: '8px'
+  }
 };
